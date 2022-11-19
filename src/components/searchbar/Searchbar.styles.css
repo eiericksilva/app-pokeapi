@@ -16,3 +16,28 @@
     padding: 5px;
     cursor: pointer;
 }
+
+.searchbar-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.test {
+    background-color: #bf1650;
+}
+
+.info-container {
+    display: flex;
+    background-color:  #bf1650;
+    border-radius: 3px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 10px;
+}
+
+.info-container img {
+    width: auto;
+}
