@@ -34,14 +34,16 @@ const Searchbar = () => {
       </div>
       
       { pokemon 
-        ? (
+        && (
           <div className="info-container">
-            <div>Nome: {pokemon.name}</div>
-            <div>Peso: {pokemon.weight}</div>
-            <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+            <div className="pokemon-data">
+              <div className="data">Nome: {pokemon.name}</div>
+              <div className="data">Peso: {pokemon.weight}</div>
+            </div>
+            <img className="pokemon-img" src={pokemon.sprites.front_default} alt={pokemon.name} />
           </div>
           ) 
-        : null}
+      }
     </>
   );
 };
