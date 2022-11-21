@@ -1,0 +1,14 @@
+.pagination-container {
+    display: flex;
+    align-items: center;
+}
+
+.pagination-container button {
+    border-radius: 45%;
+    padding: 2px;
+    border: 1px solid black;
+    margin: 5px;
+    background-color: #091226;
+    color: white;
+    cursor: pointer;
+}
