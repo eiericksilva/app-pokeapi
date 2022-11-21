@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import { getPokemons, getPokemonsData } from "./api";
 import { FavoriteProvider } from "./context/favorites-context";
 
+const favoritesKey = 'f'
+
 const App = () => {
   const [loading, setLoading] = useState(false);
   const [pokemons, setPokemons] = useState([]);
@@ -14,6 +16,11 @@ const App = () => {
   const [favorites, setFavorites] = useState([])
 
   const itensPerPage = 25
+  
+  const loadFavoritePokemons = () => {
+    const pokemons = JSON.parse(window.localStorage.getItem(favoritesKey)) || []
+    setFavorites(pokemons)
+  }
   const fetchPokemons = async () => {
     try {
       setLoading(true);
@@ -33,14 +40,20 @@ const App = () => {
     fetchPokemons();
   }, [page]);
 
+  useEffect(() => {
+    loadFavoritePokemons();
+  }, []);
+
+
   const updateFavoritePokemons = (name) => {
     const updatedFavorites = [...favorites]
     const favoriteIndex = favorites.indexOf(name)
     if(favoriteIndex >= 0) {
-      updatedFavorites.slice(favoriteIndex, 1)
+      updatedFavorites.splice(favoriteIndex, 1)
     } else {
       updatedFavorites.push(name)
     }
+    window.localStorage.setItem(favoritesKey, JSON.stringify(updatedFavorites))
     setFavorites(updatedFavorites)
   }
   return (
