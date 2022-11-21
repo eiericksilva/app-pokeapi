@@ -2,6 +2,9 @@
     display: flex;
     filter: drop-shadow(2px 4px 8px #585858);
     border-radius: 3px;
+    background-color: #091226ce;
+    color: yellow;
+    
 }
 
 .pokemon-img {
@@ -47,4 +50,8 @@
 .pokemon-type-text {
    margin-right: 10px;
    text-transform: capitalize;
+   background-color: yellow;
+   color: #091226;
+   padding: 2px 14px;
+   border-radius: 15px;
 }
