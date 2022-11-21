@@ -1,25 +1,22 @@
 import "./Searchbar.styles.css";
 import SearchIcon from '@mui/icons-material/Search';
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { searchPokemon } from "../../api";
 
-const Searchbar = () => {
+const Searchbar = (props) => {
   const [search, setSearch] = useState("");
-  const [pokemon, setPokemon ] = useState();
+  const { onSearch } = props
   
   const onChangeHandler = (e) => {
     setSearch(e.target.value);
+    if(!e.target.value) {
+      onSearch(undefined)
+    }
   };
 
   const onButtonClickHandler = () => {
-    onSearchHandler(search)
-  }
-
-  const onSearchHandler = async (pokemon) => {
-    const result = await searchPokemon(pokemon)
-    setPokemon(result)
-    console.log(result)
+    onSearch(search)
   }
 
   return (
@@ -32,18 +29,6 @@ const Searchbar = () => {
           <SearchIcon onClick={onButtonClickHandler} className="searchbar-btn"/>
         </div>
       </div>
-      
-      { pokemon 
-        && (
-          <div className="info-container">
-            <div className="pokemon-data">
-              <div className="data">Nome: {pokemon.name}</div>
-              <div className="data">Peso: {pokemon.weight}</div>
-            </div>
-            <img className="pokemon-img" src={pokemon.sprites.front_default} alt={pokemon.name} />
-          </div>
-          ) 
-      }
     </>
   );
 };

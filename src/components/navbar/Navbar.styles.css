@@ -14,3 +14,17 @@ nav {
 .text-favorite-pokemons {
     color: white;
 }
+
+.nav-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.nav-container .text-favorite-pokemons {
+    background-color: #4979e274;
+    padding: 10px 30px;
+    border-radius: 0 30px;
+    color: yellow;
+    font-size: 1.1rem;
+
+}
