@@ -61,13 +61,14 @@ const App = () => {
 
   const onSearchHandler = async (pokemon) => {
     if(!pokemon) {
-     return fetchPokemons()
+      return fetchPokemons()
     }
 
     setLoading(true)
     setNotFound(false)
     const result = await searchPokemon(pokemon)
     if(!result) {
+      alert('pokemon não encontrado')
       setNotFound(true)
     } else {
       setPokemons([result])
@@ -81,13 +82,13 @@ const App = () => {
       <>
         <Navbar />
         <Searchbar onSearch={onSearchHandler}/>
-        {notFound ? (<div className="not-found-text">Meteu essa?!</div>) : <Pokedex
+        <Pokedex
           pokemons={pokemons}
           loading={loading}
           page={page}
           setPage={setPage}
           totalPages={totalPages}
-        />}
+        />
       </>
     </FavoriteProvider>
   );

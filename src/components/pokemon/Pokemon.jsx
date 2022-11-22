@@ -8,8 +8,8 @@ const Pokemon = (props) => {
   const onHeartClick = () => {
     setFavoritePokemons(pokemon.name)
   }
-  const heart = favoritePokemons.includes(pokemon.name) ? "💘" : "🖤 "
-  console.log('pokemon', pokemon)
+
+  const heart = favoritePokemons.includes(pokemon.name) ? "💘" : "🖤"
   return (
     <div className='pokemon-card'>
       <div className="pokemon-image-container">
