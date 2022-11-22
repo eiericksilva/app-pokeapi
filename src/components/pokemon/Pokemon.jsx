@@ -3,10 +3,10 @@ import './pokemon.styles.css'
 import FavoriteContext from '../../context/favorites-context'
 
 const Pokemon = (props) => {
-  const {favoritePokemons, updateFavoritePokemons} = useContext(FavoriteContext)
+  const {favoritePokemons, setFavoritePokemons} = useContext(FavoriteContext)
   const {pokemon} = props
   const onHeartClick = () => {
-    updateFavoritePokemons(pokemon.name)
+    setFavoritePokemons(pokemon.name)
   }
   const heart = favoritePokemons.includes(pokemon.name) ? "💘" : "🖤 "
   console.log('pokemon', pokemon)

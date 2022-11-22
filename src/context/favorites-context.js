@@ -1,8 +1,8 @@
-import React, { createContext } from 'react'
+import { createContext } from 'react'
 
 export const FavoriteContext = createContext({
     favoritePokemons: [],
-    updateFavoritePokemons: (id) => null
+    setFavoritePokemons: (id) => null
 })
 
 export const FavoriteProvider = FavoriteContext.Provider

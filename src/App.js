@@ -37,6 +37,7 @@ const App = () => {
       console.log(`fetchPokemons Error: ${error}`);
     }
   };
+  
   useEffect(() => {
     fetchPokemons();
   }, [page]);
@@ -46,7 +47,7 @@ const App = () => {
   }, []);
 
 
-  const updateFavoritePokemons = (name) => {
+  const setFavoritePokemons = (name) => {
     const updatedFavorites = [...favorites]
     const favoriteIndex = favorites.indexOf(name)
     if(favoriteIndex >= 0) {
@@ -76,7 +77,7 @@ const App = () => {
     setLoading(false)
   }
   return (
-    <FavoriteProvider value={{favoritePokemons:favorites, updateFavoritePokemons:updateFavoritePokemons}}>
+    <FavoriteProvider value={{favoritePokemons:favorites, setFavoritePokemons:setFavoritePokemons}}>
       <>
         <Navbar />
         <Searchbar onSearch={onSearchHandler}/>

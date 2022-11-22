@@ -2,7 +2,6 @@ import "./Searchbar.styles.css";
 import SearchIcon from '@mui/icons-material/Search';
 
 import { useState } from "react";
-import { searchPokemon } from "../../api";
 
 const Searchbar = (props) => {
   const [search, setSearch] = useState("");
