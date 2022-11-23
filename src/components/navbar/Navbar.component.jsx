@@ -1,6 +1,6 @@
 import React, {useContext} from "react";
 import './Navbar.styles.css'
-import FavoriteContext from "../../context/favorites-context";
+import {FavoriteContext} from "../../context/favorites-context";
 
 const Navbar = () => {
   const { favoritePokemons } = useContext(FavoriteContext)
