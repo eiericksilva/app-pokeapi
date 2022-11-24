@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { getPokemons, getPokemonsData, searchPokemon } from "./api";
 import { FavoriteProvider } from "./context/favorites-context";
 
-const favoritesKey = 'f'
+const favoritesKey = 'favorites'
 
 const App = () => {
   const [loading, setLoading] = useState(false);
@@ -19,6 +19,7 @@ const App = () => {
   const itensPerPage = 25
   
   const loadFavoritePokemons = () => {
+    /* Pegar informações no LocalStorage */
     const pokemons = JSON.parse(window.localStorage.getItem(favoritesKey)) || []
     setFavorites(pokemons)
   }
@@ -50,11 +51,14 @@ const App = () => {
   const setFavoritePokemons = (name) => {
     const updatedFavorites = [...favorites]
     const favoriteIndex = favorites.indexOf(name)
+
     if(favoriteIndex >= 0) {
       updatedFavorites.splice(favoriteIndex, 1)
     } else {
       updatedFavorites.push(name)
     }
+
+    /* Armazenando Favorites no localstorage */
     window.localStorage.setItem(favoritesKey, JSON.stringify(updatedFavorites))
     setFavorites(updatedFavorites)
   }
@@ -78,7 +82,7 @@ const App = () => {
     setLoading(false)
   }
   return (
-    <FavoriteProvider value={{favoritePokemons:favorites, setFavoritePokemons:setFavoritePokemons}}>
+    <FavoriteProvider value={{favoritePokemons:favorites, setFavoritePokemons}}>
       <>
         <Navbar />
         <Searchbar onSearch={onSearchHandler}/>
